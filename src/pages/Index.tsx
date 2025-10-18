@@ -7,15 +7,17 @@ import { Skills } from "../components/Skills";
 import { Research } from "../components/Research";
 import { Awards } from "../components/Awards";
 import { Contact } from "../components/Contact";
+import ResearchInterests3D  from "../components/ResearchInterests3D";  
 const Index = () => {
   return <div className="min-h-screen bg-background">
       <Navbar />
       <Hero />
       <About />
+      <Research />
+      <ResearchInterests3D />
       <Experience />
       <Projects />
       <Skills />
-      <Research />
       <Awards />
       <Contact />
       

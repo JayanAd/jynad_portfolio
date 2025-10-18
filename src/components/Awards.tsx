@@ -20,7 +20,7 @@ const awards = [
 
 export const Awards = () => {
   return (
-    <section id="awards" className="py-20 px-4 bg-secondary/20">
+    <section id="awards" className="py-20 px-4 ">
       <div className="container mx-auto max-w-6xl">
         <div className="space-y-12">
           <div className="text-center space-y-4 animate-fade-in">

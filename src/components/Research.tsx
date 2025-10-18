@@ -13,7 +13,7 @@ const research = [{
   tags: ["Computer Vision", "YOLO", "Medical AI", "Domain Adaptation", "XAI"]
 }];
 export const Research = () => {
-  return <section id="research" className="py-20 px-4">
+  return <section id="research" className="py-20 px-4 ">
       <div className="container mx-auto max-w-6xl">
         <div className="space-y-12">
           <div className="text-center space-y-4 animate-fade-in">
