@@ -26,7 +26,7 @@ export const Projects = () => {
             <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               Featured Projects
             </h2>
-            <p className="text-lg text-muted-foreground">Building intelligent systems with cutting-edge AI technologies
+            <p className="text-lg text-muted-foreground">
 Please visit GitHub for more..</p>
           </div>
           

@@ -11,7 +11,7 @@ export const About = () => {
               About Me
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              A passionate data scientist specializing in deep learning, NLP, and computer vision
+              A passionate data scientist specializing in deep learning, NLP, and computer vision and a Certified Computer Engineer.
             </p>
           </div>
           

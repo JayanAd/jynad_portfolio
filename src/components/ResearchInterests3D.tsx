@@ -147,12 +147,12 @@ function Scene() {
     { text: 'Explainable AI', size: 0.75, color: '#06b6d4' },
     { text: 'Federated Learning', size: 0.75, color: '#8b5cf6' },
     { text: 'Deep Learning', size: 0.55, color: '#0891b2' },
-    { text: 'NLP', size: 0.56, color: '#7c3aed' },
+    { text: 'Neuro-Symbolic AI', size: 0.76, color: '#7c3aed' },
     { text: 'Computer Vision', size: 0.58, color: '#0e7490' },
     { text: 'AI in healthcare', size: 0.45, color: '#a855f7' },
     { text: 'Fairness in AI', size: 0.52, color: '#0284c7' },
     { text: 'LLMs', size: 0.68, color: '#6366f1' },
-    { text: 'VLMs', size: 0.45, color: '#0891b2' },
+    { text: 'Vison Models', size: 0.45, color: '#0891b2' },
   ], []);
 
   const positions = useMemo(() => {
