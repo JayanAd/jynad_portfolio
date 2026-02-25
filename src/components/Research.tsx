@@ -8,7 +8,7 @@ const research = [{
   tags: ["NLP", "XAI", "SHAP", "LLMs", "Bias Detection"]
 }, {
   title: "Analysis of Invasive Breast Cancer in Mammograms Using YOLO, Explainability and Domain Adaptation",
-  status: "Finalizing Manuscript - Expected 2025",
+  status: "ArXiv Preprint",
   description: "Applying advanced computer vision techniques with explainable AI for breast cancer detection",
   tags: ["Computer Vision", "YOLO", "Medical AI", "Domain Adaptation", "XAI"]
 }];

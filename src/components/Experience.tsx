@@ -6,7 +6,7 @@ const experiences = [
     title: "Data Scientist",
     company: "Dvorak Innovation Pvt. Ltd.",
     location: "Pokhara, Nepal",
-    period: "May 2024 - Present",
+    period: "February 2025 - Present",
     description: [
       "Deep Learning & Generative AI",
       "Topic Modeling & LLMs",
@@ -18,7 +18,7 @@ const experiences = [
     title: "Data Science Intern",
     company: "Dvorak Innovation Pvt. Ltd.",
     location: "Pokhara, Nepal",
-    period: "November 2023 - April 2024",
+    period: "August 2024 - January 2025",
     description: [
       "Python, NumPy, Pandas",
       "Data Visualization (Matplotlib, Seaborn, Power BI, Tableau)",
