@@ -1,52 +1,30 @@
-import { GraduationCap } from "lucide-react";
 import { TerminalCard, SectionEyebrow } from "./TerminalCard";
+
+const mono = "'IBM Plex Mono',monospace";
+const sans = "'IBM Plex Sans',sans-serif";
 
 export const About = () => {
   return (
-    <section id="about" className="py-20 px-4 ">
-      <div className="container mx-auto max-w-6xl">
-        <div className="space-y-8">
-          <div className="space-y-2 animate-fade-in">
-            <SectionEyebrow index="01" label="about" />
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">About Me</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl">
-              A passionate data scientist specializing in deep learning, NLP, and computer vision and a Certified Computer Engineer.
-            </p>
+    <section id="about" style={{ padding: "96px 24px", background: "var(--bg)" }}>
+      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+        <SectionEyebrow index="01" label="about" />
+        <h2 style={{ fontFamily: sans, fontWeight: 700, fontSize: "clamp(24px,3.4vw,32px)", color: "var(--fg)", margin: "0 0 32px" }}>About Me</h2>
+
+        <TerminalCard filename="about.json">
+          <h3 style={{ fontFamily: sans, fontWeight: 600, fontSize: 19, color: "var(--fg)", margin: "0 0 4px" }}>Bachelor of Computer Engineering</h3>
+          <p style={{ fontFamily: sans, fontSize: 14.5, color: "var(--muted-t)", margin: "0 0 2px" }}>Gandaki College of Engineering and Science, Pokhara University</p>
+          <p style={{ fontFamily: mono, fontSize: 12.5, color: "var(--muted-t)", margin: "0 0 18px" }}>2019 – 2024</p>
+
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 20 }}>
+            <span style={{ fontFamily: mono, fontSize: 12.5, padding: "6px 14px", borderRadius: 5, background: "var(--accent-dim)", color: "var(--accent-t)", border: "1px solid var(--border-t)" }}>CGPA: 3.91 / 4.00</span>
+            <span style={{ fontFamily: mono, fontSize: 12.5, padding: "6px 14px", borderRadius: 5, background: "var(--accent-dim)", color: "var(--accent-t)", border: "1px solid var(--border-t)" }}>Dean's List</span>
           </div>
 
-          <TerminalCard filename="about.json" className="animate-fade-in-up">
-            <div className="flex items-start gap-4">
-              <div className="p-3 rounded-lg bg-accent/10 border border-accent/20 shrink-0">
-                <GraduationCap className="w-6 h-6 text-accent" />
-              </div>
-              <div className="flex-1 space-y-4">
-                <div>
-                  <h3 className="text-2xl font-bold mb-2">Bachelor of Computer Engineering</h3>
-                  <p className="text-muted-foreground">
-                    Gandaki College of Engineering and Science, Pokhara University
-                  </p>
-                  <p className="text-sm font-mono text-muted-foreground mt-1">2019 - 2024</p>
-                </div>
-
-                <div className="flex flex-wrap gap-3">
-                  <span className="px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-sm font-mono font-semibold text-accent">
-                    CGPA: 3.91/4.00
-                  </span>
-                  <span className="px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-sm font-mono font-semibold text-accent">
-                    Dean's List
-                  </span>
-                </div>
-
-                <div className="pt-2">
-                  <p className="text-sm text-muted-foreground">
-                    <span className="font-semibold text-foreground">Key Coursework:</span> Deep Learning,
-                    Natural Language Processing, Probability &amp; Statistics, Linear Algebra, SQL, Calculus
-                  </p>
-                </div>
-              </div>
-            </div>
-          </TerminalCard>
-        </div>
+          <p style={{ fontFamily: sans, fontSize: 14.5, lineHeight: 1.7, color: "var(--muted-t)", margin: 0 }}>
+            <span style={{ color: "var(--fg)", fontWeight: 600 }}>Key coursework: </span>
+            Deep Learning, Natural Language Processing, Probability &amp; Statistics, Linear Algebra, SQL, Calculus.
+          </p>
+        </TerminalCard>
       </div>
     </section>
   );

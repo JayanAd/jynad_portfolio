@@ -1,73 +1,42 @@
-import { Mail, Github, Linkedin } from "lucide-react";
-import { TerminalCard, SectionEyebrow } from "./TerminalCard";
+import { SectionEyebrow } from "./TerminalCard";
+
+const mono = "'IBM Plex Mono',monospace";
+const sans = "'IBM Plex Sans',sans-serif";
 
 export const Contact = () => {
   return (
-    <section id="contact" className="py-20 px-4">
-      <div className="container mx-auto max-w-4xl">
-        <div className="space-y-8">
-          <div className="space-y-2 animate-fade-in">
-            <SectionEyebrow index="08" label="contact" />
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">Let's Connect</h2>
-            <p className="text-lg text-muted-foreground">Open to opportunities and collaborations in AI and Data Science</p>
+    <section id="contact" style={{ padding: "96px 24px", background: "var(--bg-alt)" }}>
+      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+        <SectionEyebrow index="08" label="contact" />
+        <h2 style={{ fontFamily: sans, fontWeight: 700, fontSize: "clamp(24px,3.4vw,32px)", color: "var(--fg)", margin: "0 0 6px" }}>Let's Connect</h2>
+        <p style={{ fontFamily: sans, fontSize: 14.5, color: "var(--muted-t)", margin: "0 0 32px" }}>Open to opportunities and collaborations in AI and Data Science.</p>
+
+        <div style={{ background: "var(--card-t)", border: "1px solid var(--border-t)", borderRadius: 8, overflow: "hidden" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "10px 16px", borderBottom: "1px solid var(--border-t)", background: "var(--bg-alt)" }}>
+            <div style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--accent-t)" }} />
+            <span style={{ fontFamily: mono, fontSize: 12, color: "var(--muted-t)" }}>contact.sh</span>
           </div>
-
-          <TerminalCard filename="contact.sh" className="animate-fade-in-up">
-            <div className="grid md:grid-cols-2 gap-4">
-              <a
-                href="mailto:jayanadkh@gmail.com"
-                className="flex items-center gap-4 p-4 rounded-lg border border-border hover:border-accent transition-all group"
-              >
-                <div className="p-3 rounded-lg bg-accent/10 border border-accent/20">
-                  <Mail className="w-5 h-5 text-accent" />
-                </div>
-                <div className="flex-1">
-                  <p className="text-xs font-mono text-accent">email</p>
-                  <p className="font-medium text-sm md:text-base">jayanadkh@gmail.com</p>
-                </div>
+          <div style={{ padding: "clamp(20px,4vw,32px)" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 12, marginBottom: 24 }}>
+              <a href="mailto:jayanadkh@gmail.com" style={{ display: "block", padding: "14px 16px", border: "1px solid var(--border-t)", borderRadius: 6 }}>
+                <div style={{ fontFamily: mono, fontSize: 11.5, color: "var(--accent-t)", marginBottom: 4 }}>email</div>
+                <div style={{ fontFamily: sans, fontSize: 13.5, color: "var(--fg)" }}>jayanadkh@gmail.com</div>
               </a>
-
-              <div className="flex items-center gap-3 p-4 rounded-lg border border-border">
-                <div className="p-3 rounded-lg bg-accent/10 border border-accent/20">
-                  <Github className="w-5 h-5 text-accent" />
-                </div>
-                <div className="flex-1">
-                  <p className="text-xs font-mono text-accent">github</p>
-                  <a
-                    href="https://github.com/JayanAd"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-medium hover:text-accent transition-colors"
-                  >
-                    @JayanAd
-                  </a>
-                </div>
-              </div>
+              <a href="https://github.com/JayanAd" target="_blank" rel="noopener noreferrer" style={{ display: "block", padding: "14px 16px", border: "1px solid var(--border-t)", borderRadius: 6 }}>
+                <div style={{ fontFamily: mono, fontSize: 11.5, color: "var(--accent-t)", marginBottom: 4 }}>github</div>
+                <div style={{ fontFamily: sans, fontSize: 13.5, color: "var(--fg)" }}>@JayanAd</div>
+              </a>
             </div>
 
-            <div className="mt-8 pt-8 border-t border-border">
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a
-                  href="https://www.linkedin.com/in/jayanad/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full sm:w-auto text-center font-mono font-semibold text-sm px-6 py-3 rounded-md bg-accent text-accent-foreground hover:opacity-90 transition-opacity inline-flex items-center justify-center gap-2"
-                >
-                  <Linkedin className="w-4 h-4" />
-                  Connect on LinkedIn
-                </a>
-                <a
-                  href="https://github.com/JayanAd"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full sm:w-auto text-center font-mono font-semibold text-sm px-6 py-3 rounded-md border border-accent text-accent hover:bg-accent/10 transition-colors inline-flex items-center justify-center gap-2"
-                >
-                  <Github className="w-4 h-4" />
-                  View GitHub
-                </a>
-              </div>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 12, paddingTop: 20, borderTop: "1px solid var(--border-t)", justifyContent: "center" }}>
+              <a href="https://www.linkedin.com/in/jayanad/" target="_blank" rel="noopener noreferrer" style={{ fontFamily: mono, fontWeight: 600, fontSize: 13.5, padding: "11px 22px", borderRadius: 6, background: "var(--accent-t)", color: "var(--accent-fg)" }}>
+                [ connect_linkedin ]
+              </a>
+              <a href="https://github.com/JayanAd" target="_blank" rel="noopener noreferrer" style={{ fontFamily: mono, fontWeight: 600, fontSize: 13.5, padding: "11px 22px", borderRadius: 6, border: "1px solid var(--accent-t)", color: "var(--accent-t)" }}>
+                [ view_github ]
+              </a>
             </div>
-          </TerminalCard>
+          </div>
         </div>
       </div>
     </section>

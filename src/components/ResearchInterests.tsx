@@ -1,21 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import { SectionEyebrow } from "./TerminalCard";
 
-interface Ring {
-  label: string;
-  sub: string;
-  baseAngle: number;
-  ringSpeed: number;
-  orbitSpeed: number;
-  phase: number;
-}
+const mono = "'IBM Plex Mono',monospace";
+const sans = "'IBM Plex Sans',sans-serif";
+
+interface Ring { label: string; sub: string; baseAngle: number; ringSpeed: number; orbitSpeed: number; phase: number; }
 
 const RINGS: Ring[] = [
   { label: "Explainable AI", sub: "(XAI)", baseAngle: 0, ringSpeed: 0.3, orbitSpeed: 1.1, phase: 0 },
   { label: "RL for Healthcare", sub: "Offline · Clinical", baseAngle: 60, ringSpeed: -0.45, orbitSpeed: 1.3, phase: 130 },
   { label: "AI for Healthcare", sub: "Medical Imaging", baseAngle: 120, ringSpeed: 0.55, orbitSpeed: 0.9, phase: 250 },
 ];
-
 const RADIUS_A = 210;
 const RADIUS_B = 90;
 
@@ -43,52 +38,38 @@ export const ResearchInterests = () => {
   };
 
   return (
-    <section id="interests" className="py-20 px-4 bg-secondary/20 overflow-hidden">
-      <div className="container mx-auto max-w-6xl">
-        <div className="space-y-2 animate-fade-in mb-4">
-          <SectionEyebrow index="02" label="research interests" />
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">Research Interests</h2>
-          <p className="text-lg text-muted-foreground">Three orbits I keep coming back to.</p>
+    <section id="interests" style={{ padding: "72px 24px 56px", background: "var(--bg-alt)", overflow: "hidden" }}>
+      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+        <SectionEyebrow index="02" label="research interests" />
+        <h2 style={{ fontFamily: sans, fontWeight: 700, fontSize: "clamp(24px,3.4vw,32px)", color: "var(--fg)", margin: "0 0 8px" }}>Research Interests</h2>
+        <p style={{ fontFamily: sans, fontSize: 14.5, color: "var(--muted-t)", margin: 0 }}>Three orbits I keep coming back to.</p>
+      </div>
+
+      <div style={{ position: "relative", height: 340, maxWidth: 520, margin: "16px auto 0" }}>
+        <div style={{ position: "absolute", left: "50%", top: "50%", width: 100, height: 100, margin: "-50px 0 0 -50px", borderRadius: "50%", background: "radial-gradient(circle, var(--violet) 0%, transparent 70%)", opacity: 0.3, filter: "blur(8px)" }} />
+        <div style={{ position: "absolute", left: "50%", top: "50%", width: 40, height: 40, margin: "-20px 0 0 -20px", borderRadius: "50%", background: "radial-gradient(circle at 35% 35%, #ffffff, var(--violet) 62%, transparent 100%)", boxShadow: "0 0 40px 9px var(--violet)" }} />
+
+        {RINGS.map((r, i) => {
+          const { ringAngle, rx, ry } = project(r);
+          return (
+            <div key={i}>
+              <div style={{ position: "absolute", left: "50%", top: "50%", width: 420, height: 180, margin: "-90px 0 0 -210px", border: "1px solid oklch(55% 0.04 260 / 0.35)", borderRadius: "50%", transform: `rotate(${ringAngle}deg)` }} />
+              <div style={{ position: "absolute", left: "50%", top: "50%", width: 10, height: 10, margin: "-5px 0 0 -5px", borderRadius: "50%", background: "#fff", boxShadow: "0 0 15px 4px rgba(255,255,255,0.7)", transform: `translate3d(${rx}px, ${ry}px, 0)` }} />
+            </div>
+          );
+        })}
+
+        <div style={{ position: "absolute", top: 4, left: "50%", transform: "translateX(-50%)", textAlign: "center" }}>
+          <div style={{ fontFamily: mono, fontWeight: 600, fontSize: 15, letterSpacing: "0.06em", color: "var(--fg)", textTransform: "uppercase" }}>{RINGS[0].label}</div>
+          <div style={{ fontFamily: mono, fontSize: 12, color: "var(--muted-t)", marginTop: 4, letterSpacing: "0.04em" }}>{RINGS[0].sub}</div>
         </div>
-
-        <div className="relative mx-auto" style={{ height: 340, maxWidth: 520 }}>
-          <div
-            className="absolute rounded-full blur-lg opacity-30"
-            style={{ left: "50%", top: "50%", width: 100, height: 100, marginLeft: -50, marginTop: -50, background: "radial-gradient(circle, hsl(var(--violet)) 0%, transparent 70%)" }}
-          />
-          <div
-            className="absolute rounded-full"
-            style={{ left: "50%", top: "50%", width: 40, height: 40, marginLeft: -20, marginTop: -20, background: "radial-gradient(circle at 35% 35%, #fff, hsl(var(--violet)) 62%, transparent 100%)", boxShadow: "0 0 40px 9px hsl(var(--violet))" }}
-          />
-
-          {RINGS.map((r, i) => {
-            const { ringAngle, rx, ry } = project(r);
-            return (
-              <div key={i}>
-                <div
-                  className="absolute rounded-full border border-muted-foreground/20"
-                  style={{ left: "50%", top: "50%", width: 420, height: 180, marginLeft: -210, marginTop: -90, transform: `rotate(${ringAngle}deg)` }}
-                />
-                <div
-                  className="absolute rounded-full bg-white"
-                  style={{ left: "50%", top: "50%", width: 10, height: 10, marginLeft: -5, marginTop: -5, boxShadow: "0 0 15px 4px rgba(255,255,255,0.7)", transform: `translate3d(${rx}px, ${ry}px, 0)` }}
-                />
-              </div>
-            );
-          })}
-
-          <div className="absolute text-center" style={{ top: 4, left: "50%", transform: "translateX(-50%)" }}>
-            <div className="font-mono font-semibold text-[15px] tracking-wide uppercase text-foreground">{RINGS[0].label}</div>
-            <div className="font-mono text-xs text-muted-foreground mt-1">{RINGS[0].sub}</div>
-          </div>
-          <div className="absolute text-left" style={{ bottom: 4, left: 0 }}>
-            <div className="font-mono font-semibold text-[15px] tracking-wide uppercase text-foreground">{RINGS[1].label}</div>
-            <div className="font-mono text-xs text-muted-foreground mt-1">{RINGS[1].sub}</div>
-          </div>
-          <div className="absolute text-right" style={{ bottom: 4, right: 0 }}>
-            <div className="font-mono font-semibold text-[15px] tracking-wide uppercase text-foreground">{RINGS[2].label}</div>
-            <div className="font-mono text-xs text-muted-foreground mt-1">{RINGS[2].sub}</div>
-          </div>
+        <div style={{ position: "absolute", bottom: 4, left: 0, textAlign: "left" }}>
+          <div style={{ fontFamily: mono, fontWeight: 600, fontSize: 15, letterSpacing: "0.06em", color: "var(--fg)", textTransform: "uppercase" }}>{RINGS[1].label}</div>
+          <div style={{ fontFamily: mono, fontSize: 12, color: "var(--muted-t)", marginTop: 4, letterSpacing: "0.04em" }}>{RINGS[1].sub}</div>
+        </div>
+        <div style={{ position: "absolute", bottom: 4, right: 0, textAlign: "right" }}>
+          <div style={{ fontFamily: mono, fontWeight: 600, fontSize: 15, letterSpacing: "0.06em", color: "var(--fg)", textTransform: "uppercase" }}>{RINGS[2].label}</div>
+          <div style={{ fontFamily: mono, fontSize: 12, color: "var(--muted-t)", marginTop: 4, letterSpacing: "0.04em" }}>{RINGS[2].sub}</div>
         </div>
       </div>
     </section>

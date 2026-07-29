@@ -1,100 +1,77 @@
-import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "./ThemeToggle";
+import { useEffect, useState } from "react";
 
 const navItems = [
-  { label: "About", href: "#about" },
-  { label: "Interests", href: "#interests" },
-  { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
-  { label: "Skills", href: "#skills" },
-  { label: "Research", href: "#research" },
-  { label: "Awards", href: "#awards" },
-  { label: "Contact", href: "#contact" },
+  { id: "about", label: "~/about" },
+  { id: "interests", label: "~/interests" },
+  { id: "experience", label: "~/experience" },
+  { id: "projects", label: "~/projects" },
+  { id: "skills", label: "~/skills" },
+  { id: "research", label: "~/research" },
+  { id: "awards", label: "~/awards" },
+  { id: "contact", label: "~/contact" },
 ];
 
+const mono = "'IBM Plex Mono',monospace";
+
 export const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    if (!mobileOpen) return;
+    const onResize = () => { if (window.innerWidth >= 840) setMobileOpen(false); };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, [mobileOpen]);
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    element?.scrollIntoView({ behavior: "smooth" });
-    setIsMobileMenuOpen(false);
+  const goTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    setMobileOpen(false);
   };
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-background/80 backdrop-blur-lg border-b border-border shadow-sm"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          <a
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
-            className="text-lg font-semibold font-mono bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
-          >
-            &gt;&gt;&gt; jayan.ai
-          </a>
+    <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, background: "oklch(15% 0.015 250 / 0.82)", backdropFilter: "blur(10px)", borderBottom: "1px solid var(--border-t)" }}>
+      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px", height: 60, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <div
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          style={{ fontFamily: mono, fontWeight: 600, fontSize: 14, color: "var(--accent-t)", cursor: "pointer", whiteSpace: "nowrap" }}
+        >
+          &gt;&gt;&gt; jayan.ai<span style={{ animation: "jdBlink 1.1s step-start infinite", color: "var(--accent-t)" }}>_</span>
+        </div>
 
-          <div className="hidden md:flex items-center gap-1">
-            {navItems.map((item) => (
-              <Button
-                key={item.href}
-                variant="ghost"
-                className="text-sm font-mono hover:text-accent transition-colors"
-                onClick={() => scrollToSection(item.href)}
-              >
-                {item.label}
-              </Button>
-            ))}
-          </div>
-
-          <div className="flex items-center gap-2">
-            <ThemeToggle />
-            
-            <Button
-              variant="ghost"
-              size="icon"
-              className="md:hidden"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        <div className="hidden min-[840px]:flex items-center gap-0.5">
+          {navItems.map((item) => (
+            <span
+              key={item.id}
+              onClick={() => goTo(item.id)}
+              className="hover:text-[color:var(--accent-t)]"
+              style={{ fontFamily: mono, fontSize: 12.5, color: "var(--muted-t)", padding: "8px 12px", cursor: "pointer", transition: "color .2s" }}
             >
-              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </Button>
-          </div>
+              {item.label}
+            </span>
+          ))}
+        </div>
+
+        <div className="min-[840px]:hidden">
+          <span
+            onClick={() => setMobileOpen((v) => !v)}
+            style={{ fontFamily: mono, fontSize: 12.5, color: mobileOpen ? "var(--accent-t)" : "var(--muted-t)", cursor: "pointer", border: "1px solid var(--border-t)", padding: "6px 10px", borderRadius: 4 }}
+          >
+            {mobileOpen ? "[ close ]" : "[ menu ]"}
+          </span>
         </div>
       </div>
 
-      {isMobileMenuOpen && (
-        <div className="md:hidden border-t border-border bg-background/95 backdrop-blur-lg">
-          <div className="container mx-auto px-4 py-4 space-y-2">
-            {navItems.map((item) => (
-              <Button
-                key={item.href}
-                variant="ghost"
-                className="w-full justify-start text-sm font-mono hover:text-accent transition-colors"
-                onClick={() => scrollToSection(item.href)}
-              >
-                {item.label}
-              </Button>
-            ))}
-          </div>
+      {mobileOpen && (
+        <div style={{ borderTop: "1px solid var(--border-t)", background: "var(--bg-alt)", padding: "12px 24px 20px", display: "flex", flexDirection: "column", gap: 2 }}>
+          {navItems.map((item) => (
+            <span
+              key={item.id}
+              onClick={() => goTo(item.id)}
+              style={{ fontFamily: mono, fontSize: 13, color: "var(--muted-t)", padding: "10px 4px", cursor: "pointer", borderBottom: "1px solid var(--border-t)" }}
+            >
+              {item.label}
+            </span>
+          ))}
         </div>
       )}
     </nav>

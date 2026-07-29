@@ -1,19 +1,16 @@
 import { useEffect, useState } from "react";
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import { NeuralNetwork } from "./NeuralNetwork";
-import { TerminalCard } from "./TerminalCard";
 
 const ROLES = ["AI Engineer", "AI Researcher", "Data Scientist"];
+const mono = "'IBM Plex Mono',monospace";
+const sans = "'IBM Plex Sans',sans-serif";
 
 const useTypewriter = () => {
   const [text, setText] = useState("");
-
   useEffect(() => {
-    let roleIdx = 0;
-    let charIdx = 0;
+    let roleIdx = 0, charIdx = 0;
     let deleting = false;
     let timer: ReturnType<typeof setTimeout>;
-
     const tick = () => {
       const full = ROLES[roleIdx];
       let delay = 65;
@@ -32,76 +29,63 @@ const useTypewriter = () => {
     timer = setTimeout(tick, 250);
     return () => clearTimeout(timer);
   }, []);
-
   return text;
 };
 
 export const Hero = () => {
   const typedRole = useTypewriter();
-
-  const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  };
+  const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 py-24 bg-gradient-to-b from-background to-secondary/20">
+    <section
+      id="hero"
+      style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", padding: "100px 20px 60px", background: "linear-gradient(180deg, var(--bg), var(--bg-alt))" }}
+    >
       <NeuralNetwork />
 
-      <div className="relative z-10 w-full max-w-2xl mx-auto">
-        <TerminalCard filename="whoami.sh" variant="window" className="backdrop-blur-sm bg-card/90 shadow-2xl">
-          <div className="text-sm font-mono text-muted-foreground">
-            <span className="text-accent">$</span> whoami
-          </div>
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground mt-2 mb-1">
-            Jayan Adhikari
-          </h1>
-          <div className="text-sm font-mono text-accent mb-6 min-h-[20px]">
-            {typedRole}<span className="animate-pulse">_</span>
+      <div style={{ position: "relative", zIndex: 2, maxWidth: 720, width: "100%" }}>
+        <div style={{ background: "oklch(19% 0.017 250 / 0.88)", border: "1px solid var(--border-t)", borderRadius: 10, overflow: "hidden", backdropFilter: "blur(6px)", boxShadow: "0 40px 90px -30px rgba(0,0,0,0.7)" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "10px 16px", borderBottom: "1px solid var(--border-t)", background: "var(--bg-alt)" }}>
+            <div style={{ width: 9, height: 9, borderRadius: "50%", background: "oklch(65% 0.18 25)" }} />
+            <div style={{ width: 9, height: 9, borderRadius: "50%", background: "oklch(75% 0.15 80)" }} />
+            <div style={{ width: 9, height: 9, borderRadius: "50%", background: "oklch(75% 0.15 145)" }} />
+            <span style={{ fontFamily: mono, fontSize: 12, color: "var(--muted-t)", marginLeft: 8 }}>whoami.sh</span>
           </div>
 
-          <div className="text-sm font-mono text-muted-foreground">
-            <span className="text-accent">$</span> cat mission.txt
-          </div>
-          <p className="text-base md:text-lg text-muted-foreground mt-2 mb-6 max-w-lg">
-            Transforming data into intelligent solutions through deep learning, NLP, and computer vision
-          </p>
+          <div style={{ padding: "clamp(24px,4vw,44px)" }}>
+            <div style={{ fontFamily: mono, fontSize: 13.5, color: "var(--muted-t)" }}><span style={{ color: "var(--accent-t)" }}>$</span> whoami</div>
+            <h1 style={{ fontFamily: sans, fontWeight: 700, fontSize: "clamp(30px,5.5vw,50px)", color: "var(--fg)", margin: "6px 0 2px", letterSpacing: "-0.01em" }}>Jayan Adhikari</h1>
+            <div style={{ fontFamily: mono, fontSize: 13.5, color: "var(--accent-t)", marginBottom: 20, minHeight: 18 }}>
+              {typedRole}<span style={{ animation: "jdBlink 1.1s step-start infinite" }}>_</span>
+            </div>
 
-          <div className="text-sm font-mono text-muted-foreground mb-2">
-            <span className="text-accent">$</span> contact --list
-          </div>
-          <a href="mailto:jayanadkh@gmail.com" className="flex items-center gap-2 text-sm font-mono text-muted-foreground hover:text-accent transition-colors mb-6 w-fit">
-            <Mail className="w-4 h-4" />
-            jayanadkh@gmail.com
-          </a>
+            <div style={{ fontFamily: mono, fontSize: 13.5, color: "var(--muted-t)" }}><span style={{ color: "var(--accent-t)" }}>$</span> cat mission.txt</div>
+            <p style={{ fontFamily: sans, fontSize: 16.5, lineHeight: 1.7, color: "var(--muted-t)", margin: "8px 0 24px", maxWidth: 520 }}>
+              Transforming data into intelligent solutions through deep learning, NLP, and computer vision.
+            </p>
 
-          <div className="flex flex-wrap gap-3 mb-6">
-            <button
-              onClick={() => scrollToSection("contact")}
-              className="font-mono font-semibold text-sm px-5 py-2.5 rounded-md bg-accent text-accent-foreground hover:opacity-90 transition-opacity"
-            >
-              [ get_in_touch ]
-            </button>
-            <button
-              onClick={() => scrollToSection("projects")}
-              className="font-mono font-semibold text-sm px-5 py-2.5 rounded-md border border-accent text-accent hover:bg-accent/10 transition-colors"
-            >
-              [ view_projects ]
-            </button>
-          </div>
+            <div style={{ fontFamily: mono, fontSize: 13.5, color: "var(--muted-t)", marginBottom: 8 }}><span style={{ color: "var(--accent-t)" }}>$</span> contact --list</div>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "8px 18px", marginBottom: 28 }}>
+              <a href="mailto:jayanadkh@gmail.com" style={{ fontFamily: mono, fontSize: 12.5, color: "var(--muted-t)" }}>
+                email: <span style={{ color: "var(--fg)" }}>jayanadkh@gmail.com</span>
+              </a>
+            </div>
 
-          <div className="flex gap-4">
-            <a href="https://github.com/JayanAd" target="_blank" rel="noopener noreferrer" className="text-sm font-mono text-muted-foreground hover:text-accent transition-colors flex items-center gap-1.5">
-              <Github className="w-4 h-4" /> github ↗
-            </a>
-            <a href="https://www.linkedin.com/in/jayanad/" target="_blank" rel="noopener noreferrer" className="text-sm font-mono text-muted-foreground hover:text-accent transition-colors flex items-center gap-1.5">
-              <Linkedin className="w-4 h-4" /> linkedin ↗
-            </a>
-          </div>
-        </TerminalCard>
-      </div>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
+              <span onClick={() => scrollTo("contact")} style={{ cursor: "pointer", fontFamily: mono, fontWeight: 600, fontSize: 13.5, padding: "11px 20px", borderRadius: 6, background: "var(--accent-t)", color: "var(--accent-fg)" }}>
+                [ get_in_touch ]
+              </span>
+              <span onClick={() => scrollTo("projects")} style={{ cursor: "pointer", fontFamily: mono, fontWeight: 600, fontSize: 13.5, padding: "11px 20px", borderRadius: 6, border: "1px solid var(--accent-t)", color: "var(--accent-t)" }}>
+                [ view_projects ]
+              </span>
+            </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-float z-10">
-        <ArrowDown className="w-6 h-6 text-muted-foreground" />
+            <div style={{ display: "flex", gap: 16, marginTop: 22 }}>
+              <a href="https://github.com/JayanAd" target="_blank" rel="noopener noreferrer" style={{ fontFamily: mono, fontSize: 12.5, color: "var(--muted-t)" }}>github ↗</a>
+              <a href="https://www.linkedin.com/in/jayanad/" target="_blank" rel="noopener noreferrer" style={{ fontFamily: mono, fontSize: 12.5, color: "var(--muted-t)" }}>linkedin ↗</a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

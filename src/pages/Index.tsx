@@ -10,7 +10,14 @@ import { Awards } from "../components/Awards";
 import { Contact } from "../components/Contact";
 
 const Index = () => {
-  return <div className="min-h-screen bg-background">
+  return (
+    <div style={{ minHeight: "100vh", position: "relative", overflowX: "hidden" }}>
+      <div
+        style={{
+          position: "fixed", inset: 0, pointerEvents: "none", zIndex: 5,
+          background: "repeating-linear-gradient(to bottom, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 3px)",
+        }}
+      />
       <Navbar />
       <Hero />
       <About />
@@ -21,12 +28,13 @@ const Index = () => {
       <Research />
       <Awards />
       <Contact />
-      
-      <footer className="py-8 px-4 border-t border-border bg-secondary/20">
-        <div className="container mx-auto text-center text-sm text-muted-foreground">
-          <p>© 2026 Jayan Adhikari</p>
-        </div>
+
+      <footer style={{ padding: "32px 24px", textAlign: "center", borderTop: "1px solid var(--border-t)" }}>
+        <span style={{ fontFamily: "'IBM Plex Mono',monospace", fontSize: 12, color: "var(--muted-t)" }}>
+          $ status: open to opportunities in AI &amp; Data Science
+        </span>
       </footer>
-    </div>;
+    </div>
+  );
 };
 export default Index;

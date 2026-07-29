@@ -2,10 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Terminal design tokens — source of truth for the site's look (oklch, single accent). */
+:root {
+  --bg: oklch(15% 0.015 250);
+  --bg-alt: oklch(17.5% 0.016 250);
+  --card-t: oklch(19% 0.017 250);
+  --card-hi: oklch(21% 0.018 250);
+  --border-t: oklch(31% 0.02 250);
+  --fg: oklch(93% 0.01 250);
+  --muted-t: oklch(64% 0.02 250);
+  --accent-t: oklch(78% 0.16 170);
+  --accent-fg: oklch(15% 0.015 250);
+  --accent-dim: oklch(78% 0.16 170 / 0.12);
+  --violet: oklch(68% 0.18 300);
+}
 
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'IBM Plex Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent-t); text-decoration: none; }
+a:hover { color: oklch(85% 0.14 170); }
+::selection { background: oklch(78% 0.16 170 / 0.3); }
+
+@keyframes jdBlink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+@keyframes jdFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+/* Legacy shadcn tokens kept only so untouched ui/* primitives (toasts, etc.) don't break. */
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -110,10 +139,6 @@ All colors MUST be HSL.
 
 @layer base {
   * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground font-sans;
+    border-color: hsl(var(--border));
   }
 }
