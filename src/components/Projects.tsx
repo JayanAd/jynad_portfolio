@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { Github, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { SectionEyebrow } from "./TerminalCard";
 
