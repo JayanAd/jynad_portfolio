@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { NeuralNetwork } from "./NeuralNetwork";
+import { TerminalCard } from "./TerminalCard";
 
 const ROLES = ["AI Engineer", "AI Researcher", "Data Scientist"];
 
@@ -44,79 +44,63 @@ export const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-background to-secondary/20">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 py-24 bg-gradient-to-b from-background to-secondary/20">
       <NeuralNetwork />
-      
-      <div className="container relative z-10 px-4 py-20 mx-auto">
-        <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in">
-          <div className="inline-block">
-            <span className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-mono font-medium mb-4">
-              <span className="w-2 h-2 bg-accent rounded-full animate-pulse-glow mr-2"></span>
-              {typedRole}<span className="animate-pulse">_</span>
-            </span>
+
+      <div className="relative z-10 w-full max-w-2xl mx-auto">
+        <TerminalCard filename="whoami.sh" variant="window" className="backdrop-blur-sm bg-card/90 shadow-2xl">
+          <div className="text-sm font-mono text-muted-foreground">
+            <span className="text-accent">$</span> whoami
           </div>
-          
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
-            <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-fade-in-up">
-              Jayan Adhikari
-            </span>
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground mt-2 mb-1">
+            Jayan Adhikari
           </h1>
-          
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto animate-fade-in-up">
-            Transforming data into intelligent solutions through deep learning, 
-            NLP, and computer vision
+          <div className="text-sm font-mono text-accent mb-6 min-h-[20px]">
+            {typedRole}<span className="animate-pulse">_</span>
+          </div>
+
+          <div className="text-sm font-mono text-muted-foreground">
+            <span className="text-accent">$</span> cat mission.txt
+          </div>
+          <p className="text-base md:text-lg text-muted-foreground mt-2 mb-6 max-w-lg">
+            Transforming data into intelligent solutions through deep learning, NLP, and computer vision
           </p>
-          
-          <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground animate-fade-in-up font-mono">
-            <a href="mailto:jayanadkh@gmail.com" className="flex items-center gap-2 hover:text-accent transition-colors">
-              <Mail className="w-4 h-4" />
-              jayanadkh@gmail.com
-            </a>
+
+          <div className="text-sm font-mono text-muted-foreground mb-2">
+            <span className="text-accent">$</span> contact --list
           </div>
-          
-          <div className="flex flex-wrap items-center justify-center gap-4 animate-fade-in-up">
-            <Button
-              size="lg"
-              className="group relative overflow-hidden bg-gradient-to-r from-primary to-accent hover:shadow-lg hover:shadow-primary/50 transition-all"
+          <a href="mailto:jayanadkh@gmail.com" className="flex items-center gap-2 text-sm font-mono text-muted-foreground hover:text-accent transition-colors mb-6 w-fit">
+            <Mail className="w-4 h-4" />
+            jayanadkh@gmail.com
+          </a>
+
+          <div className="flex flex-wrap gap-3 mb-6">
+            <button
               onClick={() => scrollToSection("contact")}
+              className="font-mono font-semibold text-sm px-5 py-2.5 rounded-md bg-accent text-accent-foreground hover:opacity-90 transition-opacity"
             >
-              Get in Touch
-              <Mail className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            
-            <Button
-              size="lg"
-              variant="outline"
-              className="group border-primary/20 hover:border-accent hover:bg-accent/10"
+              [ get_in_touch ]
+            </button>
+            <button
               onClick={() => scrollToSection("projects")}
+              className="font-mono font-semibold text-sm px-5 py-2.5 rounded-md border border-accent text-accent hover:bg-accent/10 transition-colors"
             >
-              View Projects
-              <ArrowDown className="ml-2 w-4 h-4 group-hover:translate-y-1 transition-transform" />
-            </Button>
+              [ view_projects ]
+            </button>
           </div>
-          
-          <div className="flex items-center justify-center gap-4 pt-8 animate-fade-in-up">
-            <a
-              href="https://github.com/JayanAd"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all group"
-            >
-              <Github className="w-5 h-5 group-hover:scale-110 transition-transform" />
+
+          <div className="flex gap-4">
+            <a href="https://github.com/JayanAd" target="_blank" rel="noopener noreferrer" className="text-sm font-mono text-muted-foreground hover:text-accent transition-colors flex items-center gap-1.5">
+              <Github className="w-4 h-4" /> github ↗
             </a>
-            <a
-              href="https://www.linkedin.com/in/jayanad/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-full border border-border hover:border-accent hover:bg-accent/10 transition-all group"
-            >
-              <Linkedin className="w-5 h-5 group-hover:scale-110 transition-transform" />
+            <a href="https://www.linkedin.com/in/jayanad/" target="_blank" rel="noopener noreferrer" className="text-sm font-mono text-muted-foreground hover:text-accent transition-colors flex items-center gap-1.5">
+              <Linkedin className="w-4 h-4" /> linkedin ↗
             </a>
           </div>
-        </div>
+        </TerminalCard>
       </div>
-      
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-float">
+
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-float z-10">
         <ArrowDown className="w-6 h-6 text-muted-foreground" />
       </div>
     </section>

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { SectionEyebrow } from "./TerminalCard";
 
 interface Ring {
   label: string;
@@ -44,7 +45,8 @@ export const ResearchInterests = () => {
   return (
     <section id="interests" className="py-20 px-4 bg-secondary/20 overflow-hidden">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center space-y-2 animate-fade-in mb-4">
+        <div className="space-y-2 animate-fade-in mb-4">
+          <SectionEyebrow index="02" label="research interests" />
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">Research Interests</h2>
           <p className="text-lg text-muted-foreground">Three orbits I keep coming back to.</p>
         </div>
