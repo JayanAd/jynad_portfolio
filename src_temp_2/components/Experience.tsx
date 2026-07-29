@@ -3,35 +3,10 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const experiences = [
   {
-    title: "AI Engineer Intern",
-    company: "Exotrac LLC",
-    location: "New York, USA (Remote)",
-    period: "July 2026 - Present",
-    kind: "Industry",
-    description: [
-      "Large Language Models (LLMs) & Vision-Language Models (VLMs)",
-      "Transformer architectures",
-      "Agentic AI systems",
-    ],
-  },
-  {
-    title: "Short-term Research Assistant",
-    company: "Dept. of Robotics & AI Engineering, KMITL",
-    location: "Bangkok, Thailand",
-    period: "June 2026 - August 2026",
-    kind: "Research",
-    description: [
-      "Edge AI & computer vision for real-time surveillance systems",
-      "Efficient deep learning deployment & optimization for resource-constrained environments",
-      "Development and evaluation of practical AI systems for real-world deployment",
-    ],
-  },
-  {
     title: "Data Scientist",
     company: "Dvorak Innovation Pvt. Ltd.",
     location: "Pokhara, Nepal",
-    period: "February 2025 - February 2026",
-    kind: "Industry",
+    period: "February 2025 - Present",
     description: [
       "Deep Learning & Generative AI",
       "Topic Modeling & LLMs",
@@ -44,7 +19,6 @@ const experiences = [
     company: "Dvorak Innovation Pvt. Ltd.",
     location: "Pokhara, Nepal",
     period: "August 2024 - January 2025",
-    kind: "Industry",
     description: [
       "Python, NumPy, Pandas",
       "Data Visualization (Matplotlib, Seaborn, Power BI, Tableau)",
@@ -94,12 +68,7 @@ export const Experience = () => {
                         </div>
                       </div>
                       
-                      <div className="flex items-center justify-between gap-2">
-                        <h3 className="text-xl font-bold mb-1 hidden md:block">{exp.title}</h3>
-                        <span className="text-[10px] font-mono tracking-widest px-2 py-1 rounded-full border border-border text-muted-foreground shrink-0">
-                          {exp.kind.toUpperCase()}
-                        </span>
-                      </div>
+                      <h3 className="text-xl font-bold mb-1 hidden md:block">{exp.title}</h3>
                       <p className="text-lg text-muted-foreground font-medium">{exp.company}</p>
                       <div className="flex flex-wrap items-center gap-4 mt-2 text-sm text-muted-foreground">
                         <span className="flex items-center gap-1">

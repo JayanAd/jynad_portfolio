@@ -1,4 +1,4 @@
-import { Mail, Github, Linkedin } from "lucide-react";
+import { Mail, Phone, MapPin, Github, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -20,7 +20,7 @@ export const Contact = () => {
             <CardContent className="p-8">
               <div className="grid md:grid-cols-2 gap-6">
                 <a
-                  href="mailto:jayanadkh@gmail.com"
+                  href="mailto:adhikarijayan10@gmail.com"
                   className="flex items-center gap-4 p-4 rounded-lg border border-border hover:border-accent hover:bg-accent/10 transition-all group"
                 >
                   <div className="p-3 rounded-lg bg-gradient-to-br from-primary/10 to-accent/10 group-hover:from-primary/20 group-hover:to-accent/20 transition-colors">
@@ -28,9 +28,32 @@ export const Contact = () => {
                   </div>
                   <div className="flex-1">
                     <p className="text-sm text-muted-foreground">Email</p>
-                    <p className="font-medium text-sm md:text-base">jayanadkh@gmail.com</p>
+                    <p className="font-medium text-sm md:text-base">adhikarijayan10@gmail.com</p>
                   </div>
                 </a>
+                
+                <a
+                  href="tel:+9779816675010"
+                  className="flex items-center gap-4 p-4 rounded-lg border border-border hover:border-accent hover:bg-accent/10 transition-all group"
+                >
+                  <div className="p-3 rounded-lg bg-gradient-to-br from-primary/10 to-accent/10 group-hover:from-primary/20 group-hover:to-accent/20 transition-colors">
+                    <Phone className="w-5 h-5 text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-sm text-muted-foreground">Phone</p>
+                    <p className="font-medium">+977 9816675010</p>
+                  </div>
+                </a>
+                
+                <div className="flex items-center gap-4 p-4 rounded-lg border border-border">
+                  <div className="p-3 rounded-lg bg-gradient-to-br from-primary/10 to-accent/10">
+                    <MapPin className="w-5 h-5 text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-sm text-muted-foreground">Location</p>
+                    <p className="font-medium">Nepal</p>
+                  </div>
+                </div>
                 
                 <div className="flex items-center gap-3 p-4 rounded-lg border border-border">
                   <div className="p-3 rounded-lg bg-gradient-to-br from-primary/10 to-accent/10">

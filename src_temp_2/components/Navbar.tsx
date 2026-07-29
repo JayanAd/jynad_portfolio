@@ -5,7 +5,6 @@ import { ThemeToggle } from "./ThemeToggle";
 
 const navItems = [
   { label: "About", href: "#about" },
-  { label: "Interests", href: "#interests" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
   { label: "Skills", href: "#skills" },
@@ -48,9 +47,9 @@ export const Navbar = () => {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
-            className="text-lg font-semibold font-mono bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
+            className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
           >
-            &gt;&gt;&gt; jayan.ai
+            JA
           </a>
 
           <div className="hidden md:flex items-center gap-1">
@@ -58,7 +57,7 @@ export const Navbar = () => {
               <Button
                 key={item.href}
                 variant="ghost"
-                className="text-sm font-mono hover:text-accent transition-colors"
+                className="text-sm hover:text-accent transition-colors"
                 onClick={() => scrollToSection(item.href)}
               >
                 {item.label}
@@ -88,7 +87,7 @@ export const Navbar = () => {
               <Button
                 key={item.href}
                 variant="ghost"
-                className="w-full justify-start text-sm font-mono hover:text-accent transition-colors"
+                className="w-full justify-start text-sm hover:text-accent transition-colors"
                 onClick={() => scrollToSection(item.href)}
               >
                 {item.label}

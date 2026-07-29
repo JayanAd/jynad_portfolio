@@ -1,44 +1,8 @@
-import { useEffect, useState } from "react";
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { NeuralNetwork } from "./NeuralNetwork";
 
-const ROLES = ["AI Engineer", "AI Researcher", "Data Scientist"];
-
-const useTypewriter = () => {
-  const [text, setText] = useState("");
-
-  useEffect(() => {
-    let roleIdx = 0;
-    let charIdx = 0;
-    let deleting = false;
-    let timer: ReturnType<typeof setTimeout>;
-
-    const tick = () => {
-      const full = ROLES[roleIdx];
-      let delay = 65;
-      if (!deleting) {
-        charIdx++;
-        setText(full.slice(0, charIdx));
-        if (charIdx >= full.length) { deleting = true; delay = 1400; }
-      } else {
-        charIdx--;
-        setText(full.slice(0, charIdx));
-        delay = 35;
-        if (charIdx <= 0) { deleting = false; roleIdx = (roleIdx + 1) % ROLES.length; delay = 250; }
-      }
-      timer = setTimeout(tick, delay);
-    };
-    timer = setTimeout(tick, delay);
-    return () => clearTimeout(timer);
-  }, []);
-
-  return text;
-};
-
 export const Hero = () => {
-  const typedRole = useTypewriter();
-
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
@@ -50,9 +14,9 @@ export const Hero = () => {
       <div className="container relative z-10 px-4 py-20 mx-auto">
         <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in">
           <div className="inline-block">
-            <span className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-mono font-medium mb-4">
+            <span className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-4">
               <span className="w-2 h-2 bg-accent rounded-full animate-pulse-glow mr-2"></span>
-              {typedRole}<span className="animate-pulse">_</span>
+              Data Scientist & AI Engineer
             </span>
           </div>
           
@@ -67,11 +31,21 @@ export const Hero = () => {
             NLP, and computer vision
           </p>
           
-          <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground animate-fade-in-up font-mono">
-            <a href="mailto:jayanadkh@gmail.com" className="flex items-center gap-2 hover:text-accent transition-colors">
+          <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground animate-fade-in-up">
+            <a href="mailto:adhikarijayan10@gmail.com" className="flex items-center gap-2 hover:text-accent transition-colors">
               <Mail className="w-4 h-4" />
-              jayanadkh@gmail.com
+              adhikarijayan10@gmail.com
             </a>
+            <span className="hidden md:inline">•</span>
+            <a href="tel:+9779816675010" className="flex items-center gap-2 hover:text-accent transition-colors">
+              <Phone className="w-4 h-4" />
+              +977 9816675010
+            </a>
+            <span className="hidden md:inline">•</span>
+            <span className="flex items-center gap-2">
+              <MapPin className="w-4 h-4" />
+              Nepal
+            </span>
           </div>
           
           <div className="flex flex-wrap items-center justify-center gap-4 animate-fade-in-up">
