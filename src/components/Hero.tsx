@@ -29,7 +29,7 @@ const useTypewriter = () => {
       }
       timer = setTimeout(tick, delay);
     };
-    timer = setTimeout(tick, delay);
+    timer = setTimeout(tick, 250);
     return () => clearTimeout(timer);
   }, []);
 
